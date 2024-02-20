@@ -17,54 +17,48 @@ const index = () => {
             className="form-group d-flex align-items-center justify-content-between
              flex-wrap row-gap-3 column-gap-1 mt-3"
           >
-            <Select
-              text={"Guruh yo’nalishi"}
-              id={"title"}
-              value={"matematika"}
+            <FormInput
+              id={"group_direction"}
+              type={"text"}
+              pl={"Ingliz-tili"}
+              labelText={"Guruh yo’nalishi"}
             />
 
             <FormInput
-              id={"days"}
+              id={"lesson_days"}
               type={"text"}
               pl={"Dush-Chor-Juma"}
               labelText={"Dars kunlari"}
             />
 
             <FormInput
-              id={"time"}
+              id={"lesson_time"}
               type={"text"}
-              pl={"14:00-16:00"}
+              pl={"14:00-15:30"}
               labelText={"Dars vaqti"}
             />
 
             <FormInput
-              id={"teacher"}
+              id={"teacher_name"}
               type={"text"}
               pl={"Dilshodbek Komilov"}
-              labelText={"O`qituvchi"}
+              labelText={"O`qituvchi ismi"}
             />
 
             <FormInput
-              id={"teacherPhone"}
+              id={"teacher_phone"}
               type={"tel"}
               pl={"+998 xx xxx xx xx"}
               labelText={"O`qituvchi tell raqami"}
             />
 
-            <FormInput
-              id={"teacherPhoto"}
-              type={"file"}
-              pl={"Yuklash"}
-              labelText={"O`qituvchi rasmi 3x4"}
-            />
-
-            <div className="w-100 d-flex align-items-center justify-content-end ">
+            <spn className="w-100 d-flex align-items-center justify-content-end ">
               <Button
                 type={"submit"}
                 text={"Qo`shish"}
                 btnClass={"btn bg-primary text-white w-25 mt-3"}
               />
-            </div>
+            </spn>
           </form>
         </div>
 

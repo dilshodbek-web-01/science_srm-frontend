@@ -11,8 +11,8 @@ const index = () => {
     <>
       <div className="header w-100 ">
         <nav className="nav d-flex align-items-center justify-content-between py-2 px-4 bg-info ">
-          <h1 className="">Education CRM</h1>
-          <p className="text-dark fw-bold pt-4">27.01.2022</p>
+          <h1 className="">Ta'lim CRM</h1>
+          <p className="text-dark fw-bold pt-4">27.01.2022 time</p>
           <div className="">
             <span className="extra bg-dark text-white p-2 rounded-circle mx-5 ">
               <i class="far fa-sun"></i>

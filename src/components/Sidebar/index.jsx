@@ -63,12 +63,12 @@ const index = () => {
                   ? "text-white bg-black d-block px-4 py-3"
                   : "text-white d-block px-4 py-3 "
               }
-              to="/guruhlar"
+              to="/ustozlar"
             >
               <span className="me-3">
-                <i class="fas fa-users fs-5"></i>
+                <i class="fa-solid fa-person-chalkboard fs-5"></i>
               </span>
-              Guruhlar
+              Ustozlar
             </NavLink>
           </li>
 
@@ -79,12 +79,12 @@ const index = () => {
                   ? "text-white bg-black d-block px-4 py-3"
                   : "text-white d-block px-4 py-3 "
               }
-              to="/tolovlar"
+              to="/guruhlar"
             >
               <span className="me-3">
-                <i class="fas fa-credit-card fs-5"></i>
+                <i class="fas fa-users fs-5"></i>
               </span>
-              Tolovlar
+              Guruhlar
             </NavLink>
           </li>
 

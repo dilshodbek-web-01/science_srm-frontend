@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import LoginInput from "../../UI/LoginInput";
 import Button from "../../UI/Button";
@@ -39,7 +39,7 @@ const index = () => {
           .post(`http://localhost:3003/auth/sign-up`, registerForm)
           .then((response) => {
             if (response.status === 201) {
-              toast.success("New user Succesfully created", {
+              toast.success("New user succesfully created", {
                 autoClose: 3000,
               });
               localStorage.setItem("token", response.data.token);
@@ -110,7 +110,6 @@ const index = () => {
             <strong>
               Already have an account? <Link to={"/login"}>Login</Link>
             </strong>
-            <ToastContainer />
           </form>
         </div>
       </div>

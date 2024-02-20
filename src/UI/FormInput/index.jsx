@@ -1,7 +1,7 @@
 import React from "react";
 import './style.scss'
 
-const index = ({ id, labelText, type, pl}) => {
+const index = ({ id, labelText, type, pl, value, setValue}) => {
   return (
     <>
       <label htmlFor={id} className="width">
@@ -10,6 +10,8 @@ const index = ({ id, labelText, type, pl}) => {
           id={id}
           type={type}
           placeholder={pl}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
           className="form-control border-primary mt-1"
         />
       </label>

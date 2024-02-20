@@ -36,7 +36,7 @@ const index = () => {
           .post(`http://localhost:3003/auth/sign-in`, loginForm)
           .then((response) => {
             if (response.status === 201) {
-              toast.success("User Succesfully sign-in", {
+              toast.success("User succesfully sign-in", {
                 autoClose: 3000,
               });
               localStorage.setItem("token", response.data.token);

@@ -2,8 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Report from "./pages/Report";
 import Students from "./pages/Students";
+import StudentInfo from "./pages/Students/studentInfo";
 import Groups from "./pages/Groups";
-import Payments from "./pages/Payments";
+import Teachers from "./pages/Teachers";
 import Attendance from "./pages/Attendance";
 import Appeals from "./pages/Appeals";
 import Private from "./private";
@@ -19,8 +20,9 @@ const App = () => {
           <Route path="/" element={<Private />}>
             <Route path="/xisobot" element={<Report />} />
             <Route path="/oquvchilar" element={<Students />} />
+            <Route path="/oquvchilar/:id" element={<StudentInfo />} />
+            <Route path="/ustozlar" element={<Teachers />} />
             <Route path="/guruhlar" element={<Groups />} />
-            <Route path="/tolovlar" element={<Payments />} />
             <Route path="/davomat" element={<Attendance />} />
             <Route path="/murojaatlar" element={<Appeals />} />
           </Route>
