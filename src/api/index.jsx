@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const authUrl = "http://localhost:3003/auth";
-const students = "http://localhost:3003/students";
+const studentsURL = "http://localhost:3003/students";
+const teachersURL = "http://localhost:3003/teachers";
 
 export const api = {
   register: async (params) => {
@@ -10,21 +11,41 @@ export const api = {
   },
 
   createStudent: async (studentForm) => {
-    const student = await axios.post(`${students}/create`, studentForm);
+    const student = await axios.post(`${studentsURL}/create`, studentForm);
     return student;
   },
 
   getAllStudents: async () => {
-    const allStudents = await axios.get(`${students}/read`);
+    const allStudents = await axios.get(`${studentsURL}/read`);
     return allStudents;
   },
 
   getOneStudent: async (id) => {
-    const oneStudent = await axios.get(`${students}/read/${id}`);
+    const oneStudent = await axios.get(`${studentsURL}/read/${id}`);
     return oneStudent;
   },
 
+  updateStudent: (id, updateStudentForm) => {
+    axios.put(`${studentsURL}/update${id}`, updateStudentForm);
+  },
+
   deleteStudent: (id) => {
-    axios.delete(`${students}/delete/${id}`);
+    const student = axios.delete(`${studentsURL}/delete/${id}`);
+    return student;
+  },
+
+  createTeacher: async (teacherForm) => {
+    const teacher = await axios.post(`${teachersURL}/create`, teacherForm);
+    return teacher;
+  },
+
+  getAllTeachers: async () => {
+    const allTeachers = await axios.get(`${teachersURL}/read`);
+    return allTeachers;
+  },
+
+  deleteTeacher: (id) => {
+    const teacher = axios.delete(`${teachersURL}/delete/${id}`);
+    return teacher;
   },
 };

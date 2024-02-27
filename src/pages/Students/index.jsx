@@ -16,6 +16,7 @@ const index = () => {
   const [parentPhone, setParentPhone] = useState("");
   const [teacherName, setTeacherName] = useState("");
   const [students, setStudents] = useState();
+  const [teachers, setTeachers] = useState();
 
   const createStudentFunction = (e) => {
     e.preventDefault();
@@ -36,10 +37,6 @@ const index = () => {
     if (check.student_name) {
       toast.error("Please fill the name and surname");
     } else {
-      toast.success("Loading ...", {
-        autoClose: 1000,
-      });
-
       api
         .createStudent(studentForm)
         .then((response) => {
@@ -63,11 +60,34 @@ const index = () => {
     api.getAllStudents().then((response) => setStudents(response.data));
   }, []);
 
+  useEffect(() => {
+    api
+      .getAllTeachers()
+      .then((response) => setTeachers(response.data))
+      .catch((error) => {});
+  }, []);
+
+  console.log(teachers);
+
+  const updateStudentFunction = (id) => {
+    api.updateStudent(id);
+  };
+
   const deleteStudentFunction = (id) => {
-    api.deleteStudent(id);
-    toast.success("Deleted student succesfully", {
-      autoClose: 3000,
-    });
+    api
+      .deleteStudent(id)
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success("Student successfully deleted !", {
+            autoClose: 3000,
+          });
+        }
+      })
+      .catch((error) => {
+        if (error.response.statusText === "Not Found") {
+          toast.error("Student not found !");
+        }
+      });
   };
 
   return (
@@ -93,7 +113,7 @@ const index = () => {
             <FormInput
               id={"student_phone"}
               type={"tel"}
-              pl={"O`quvchi telefon raqamini kiriting"}
+              pl={"+998 xx xxx xx xx"}
               labelText={"Telefon raqami"}
               value={studentPhone}
               setValue={setStudentPhone}
@@ -110,7 +130,7 @@ const index = () => {
               id={"parent_name"}
               type={"text"}
               pl={"Ota-Onasi ismini kiriting"}
-              labelText={"Ota-Onasi ismi"}
+              labelText={"Ota-Onasi ismi familyasi"}
               value={parentName}
               setValue={setParentName}
             />
@@ -118,7 +138,7 @@ const index = () => {
             <FormInput
               id={"parent_phone"}
               type={"tel"}
-              pl={"Ota-Onasi telefon raqamini kiriting"}
+              pl={"+998 xx xxx xx xx"}
               labelText={"Ota-Ona telefon raqami"}
               value={parentPhone}
               setValue={setParentPhone}
@@ -127,7 +147,15 @@ const index = () => {
             <Select
               text={"O`qituvchi ismi"}
               id={"teacher_name"}
-              value={teacherName}
+              value={
+                teachers?.length > 0 ? (
+                  teachers?.map((el) => {
+                    return <option key={el.id}>{el.teacher_name}</option>;
+                  })
+                ) : (
+                  <option>O`qituvchi qo`shing</option>
+                )
+              }
               setValue={setTeacherName}
             />
 
@@ -144,7 +172,7 @@ const index = () => {
         <div className="our__students mt-5">
           <div className="our__students--up d-flex align-items-center justify-content-between px-5">
             <h3 className="text-primary">Bizning o’quvchilar</h3>
-            <InputSearch id={"studentSearch"} />
+            <InputSearch id={"studentSearch"} pl={"O`quvchi ismini kiriting"} />
           </div>
 
           <div className="students__list mt-3 px-4">
@@ -173,7 +201,10 @@ const index = () => {
                         <td>{el.student_group}</td>
                         <td>{el.parent_phone}</td>
                         <td className="text-primary pt-4">
-                          <i className="far fa-pen-to-square cursor"></i>
+                          <i
+                            className="far fa-pen-to-square cursor"
+                            onClick={() => updateStudentFunction(el.id)}
+                          ></i>
                         </td>
                         <td className="text-danger pt-4">
                           <i

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 
-const index = ({ text, id, value, setValue }) => {
+const index = ({ text, id, value, setValue, studentmap }) => {
   return (
     <>
       <div className="width">
@@ -12,7 +12,8 @@ const index = ({ text, id, value, setValue }) => {
           onChange={(e) => setValue(e.target.value)}
           className="w-100 py-2 px-2 mt-1 border-primary rounded"
         >
-          <option value="1">{value}</option>
+          <option selected>Bironta bo`limni tanlang</option>
+          {value}
         </select>
       </div>
     </>
